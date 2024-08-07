@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cinemas',
     'rest_framework',
+    'drf_yasg',
 
 ]
 

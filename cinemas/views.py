@@ -27,9 +27,6 @@ class CinemasDetail(RetrieveAPIView):
 
 
 class CinemasSearchName(APIView):
-    def get(self, request):
-        lst = CinemaGeneral.objects.all().values()
-        return Response({'post': lst})
 
     def post(self, request, name__contains=None):
         name = request.data['name']
