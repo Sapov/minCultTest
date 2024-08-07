@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import CinemasListView, CinemasDetail, CinemasDetailAPIView
+from cinemas.views import CinemasListView, CinemasDetail, CinemasDetailAPIView
 
 app_name = 'Cinemas'
 
