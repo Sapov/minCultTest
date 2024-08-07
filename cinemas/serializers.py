@@ -5,4 +5,4 @@ from cinemas.models import CinemaGeneral
 class CinemaGeneralSerializer(serializers.ModelSerializer):
     class Meta:
         model = CinemaGeneral
-        fields = ['name', 'description', 'street']
+        fields = '__all__'
