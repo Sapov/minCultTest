@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from cinemas.urls import schema_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('cinemas.urls')),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
 ]
