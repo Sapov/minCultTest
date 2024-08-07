@@ -29,12 +29,17 @@ class CinemasDetail(RetrieveAPIView):
 class CinemasSearchName(APIView):
     def get(self, request):
         lst = CinemaGeneral.objects.all().values()
-        print(lst)
         return Response({'post': lst})
 
     def post(self, request, name__contains=None):
         name = request.data['name']
         lst = CinemaGeneral.objects.filter(name__icontains=name).values()
-        print(lst)
         return Response({'post': lst})
 
+
+class CinemasSearchAddress(APIView):
+
+    def post(self, request, name__contains=None):
+        address = request.data['address']
+        lst = CinemaGeneral.objects.filter(full_address__icontains=address).values()
+        return Response({'post': lst})
