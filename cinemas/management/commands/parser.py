@@ -17,45 +17,13 @@ class Parser:
         }
         results = requests.get(self.url, headers=headers)
         print(results.status_code)
+        print(f'[INFO] Сохраняю json')
         with open('cinema.json', 'w', encoding='utf-8') as file:
             json.dump(results.json(), file, indent=4, ensure_ascii=False)
-
-    def load_data(self):
-        with open('cinema_old.json', 'r', encoding='utf-8') as file:
-            d = json.load(file)
-            # print(d.keys())
-            # print(d['data'])
-            # print(len(d['data']))
-            for i in d['data']:
-                # print(i['data']['general'])
-                id = i['data']['general']['id']
-                name = i['data']['general']['name']
-                description = i['data']['general']['description']
-                address = i['data']['general']['address']
-                # print(address)
-                contacts = i['data']['general'].get('contacts', None)
-                if contacts != None:
-                    print(contacts)
-                    website = contacts.get('website', None)
-                    email = contacts.get('email', None)
-                    print(email)
-                    phones = contacts.get('phones', None)
-                    if phones:
-                        for j in phones:
-                            print(j['value'], j['comment'])
-
-                # website = i['data']['general'].get('contacts', None).get('website', None)
-
-                # if i['data']['general']['contacts']['email']:
-                #     email = i['data']['general']['contacts']['email']
-                #     print(email)
-                # email = None
-                # phones = i['data']['general']['contacts']['phones']
-                # mapPosition = i['data']['general']['mapPosition']['coordinates']
+        print(f'[INFO] Сохранил json')
 
     def run(self):
         self.get_json()
-        # self.load_data()
 
 
 if __name__ == '__main__':

@@ -25,4 +25,7 @@ COPY --chown=django:django . .
 RUN pip install -r requirements.txt
 
 USER django
+WORKDIR /django/cinemas/management/commands
+RUN chmod 777 parser.py
+CMD ["python3", "parser.py"]
 CMD ["gunicorn","-b","0.0.0.0:8000","mysite.wsgi:application"]
