@@ -2,12 +2,8 @@ FROM python:3.10.4
 
 LABEL authors="sasha"
 
-ENTRYPOINT ["top", "-b"]
-
-
 SHELL ["/bin/bash", "-c"]
 
-# set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -25,7 +21,7 @@ COPY --chown=django:django . .
 RUN pip install -r requirements.txt
 
 USER django
-WORKDIR /django/cinemas/management/commands
-RUN chmod 777 parser.py
-CMD ["python3", "parser.py"]
+RUN chmod 777 cinemas/management/commands/parser.py
+RUN python cinemas/management/commands/parser.py
+
 CMD ["gunicorn","-b","0.0.0.0:8000","mysite.wsgi:application"]

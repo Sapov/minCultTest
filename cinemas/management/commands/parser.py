@@ -12,8 +12,7 @@ class Parser:
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Cookie': 'apisid=VjVXbBDTwCoNGSGi1%2FmWyZRK59N5WzkUYlmE%2FfDbi%2FUal5egjRJVqwv7z7V5HRfV86uRkO9w1kcpjJshoq7n8xcKXZ3PXTutZcTVuTM4LqSQixs7pW1hAMKg%2BPJvKY%2FG8GhqmAUk%2Bjw%2BH6W1ZIM1nnqEr839yzsM3uZp75lhPi4%3D'
-
+            'Cookie': 'apisid=GmbyLtWWSWEa1wLoRAJbe4wVB%2F63xRPp1JCFnve9FKFEMwBR5Cl55edmUjagHGTdmwKT2G34CIGpUcCCpHMQOl1G5QZO8XX3%2F42OIh3Wnnp%2FTmWzSul0Sp5InTd2tSWOemENl7CCLlvacDW3qnsTsFSqIUHImT1WARvvH6rs5eM%3D'
         }
         results = requests.get(self.url, headers=headers)
         print(results.status_code)

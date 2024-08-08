@@ -64,7 +64,7 @@ class Cinema(BaseModel):
 
 
 def parse_data():
-    with open('/home/sasha/PycharmProjects/test_mincult/cinemas/management/commands/cinema.json', 'r',
+    with open('cinema.json', 'r',
               encoding='utf-8') as file:
         data = json.load(file)
 
