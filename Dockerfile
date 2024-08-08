@@ -14,6 +14,7 @@ RUN apt update && apt -qy install gcc gettext cron openssh-client locales vim
 RUN useradd -rms /bin/bash django && chmod 777 /opt /run
 
 WORKDIR /django
+RUN mkdir /django/static
 RUN chown -R django:django /django && chmod 755 /django
 
 COPY --chown=django:django . .
