@@ -3,6 +3,10 @@ from django.core.management.base import BaseCommand
 from cinemas.models import CinemaGeneral
 
 
+def str_cleaning(st: str) -> str:
+    return st.replace('<p>', '').replace('</p>', '').replace('<br />', '')
+
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
@@ -15,7 +19,7 @@ class Command(BaseCommand):
                 CinemaGeneral.objects.get_or_create(
                     id_service=data.data.general.id,
                     name=data.data.general.name,
-                    description=data.data.general.description,
+                    description=str_cleaning(data.data.general.description),
                     street=data.data.general.address.street,
                     comment=data.data.general.address.comment,
                     full_address=data.data.general.address.fullAddress,
@@ -24,9 +28,3 @@ class Command(BaseCommand):
                     website=data.data.general.contacts.website,
                     email=data.data.general.contacts.email,
                     phones=data.data.general.contacts.phones[0].value)
-                    # type=data.data.general.address.mapPosition.type
-                # )
-                # coordinates=data.data.general.address.mapPosition.coordinates)
-
-    #
-

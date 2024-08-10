@@ -25,8 +25,8 @@ class CinemasViewSet(ModelViewSet):
     def search_name(self, request):
         """поиск по имени кинотеатра
             {"name":"Космос"}"""
-        address = request.data['address']
-        lst = CinemaGeneral.objects.filter(full_address__icontains=address).values()
+        name = request.data['name']
+        lst = CinemaGeneral.objects.filter(name__icontains=name).values()
         return Response({'post': lst})
 
 

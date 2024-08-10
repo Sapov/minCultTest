@@ -1,7 +1,7 @@
 import json
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class Phones(BaseModel):
@@ -91,12 +91,3 @@ def parse_data():
 
 if __name__ == '__main__':
     parse_data()
-
-# try:
-#     cinema = Cinema(**data)
-#     print(cinema.data[0].data.general.contacts)
-#
-# except ValidationError as exc:
-#     print(exc.json())
-# print(repr(exc.errors()[0]['type']))
-# > 'missing'
