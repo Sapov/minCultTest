@@ -116,6 +116,7 @@ docker compose down
 ```bash
 docker compose down -v
 ```
+
 </details><h1></h1></details>
 
 <details><summary>Запуск на удаленном сервере</summary>
@@ -190,6 +191,10 @@ PASSPHRASE
 Для удаления проекта выполните следующие действия:
 ```bash
 cd .. && rm -fr Django && deactivate
+```
+Удаление volume базы данных
+```bash
+sudo rm -f -r .pg/
 ```
   
 [⬆️Оглавление](#оглавление)
