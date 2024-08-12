@@ -2,7 +2,7 @@
 
 ### API на справочник кинотеатров с возможностью поиска Кинотеатров по адресу или по названию
 
-[Тестовое задание](https://docs.google.com/document/d/1XTnbcXhejyGB-I2cHRiiSZqI3ElHzqDJeetwHkJbTa8/edit?usp=sharing)
+[Тестовое задание](https://disk.yandex.ru/d/9oQRbCKkon2h4A)
 
 <br>
 
@@ -91,7 +91,7 @@ python -m pip install --upgrade pip && pip install -r requirements.txt
 python tree_menu/manage.py makemigrations && \
 python tree_menu/manage.py migrate && \
 python tree_menu/manage.py load_data && \
-python tree_menu/manage.py create_superuser && \
+python tree_menu/manage.py createsuperuser && \
 python tree_menu/manage.py runserver
 ```
 Сервер запустится локально по адресу `http://127.0.0.1:8000/`
@@ -104,7 +104,7 @@ python tree_menu/manage.py runserver
 
 2. Из корневой директории проекта выполните команду:
 ```bash
-docker compose -f infra/local/docker-compose.yml up -d --build
+docker compose up
 ```
 Проект будет развернут в трех docker-контейнерах (postgres_db, django_project, nginx) по адресу `http://localhost`.
 
@@ -153,7 +153,6 @@ PASSPHRASE
   - БД заполнена начальными данными
   - собрана статика
   - создан суперюзер (пользователь с правами админа) с учетными данными:
-      - для Django: username = 'adm', password = 'adm' - значения можно изменить в `tree_menu\app\management\commands\create_superuser.py`
       - для Docker Compose - из переменных окружения `ADMIN_USERNAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`
       
  
@@ -174,14 +173,13 @@ PASSPHRASE
 
 ## Описание работы:
 
-На странице `http://<hostname>/swagger/` представлена документация об эндпоинтах четыре тестовых меню, при клике на название которых происходит переход на страницу данного меню. Возврат в главное меню происходит при клике `В главное меню`.
-Принцип работы приложения основан на выборке из БД всех пунктов меню, которые имеют в поле `menu` название выбранного меню. Название выбранного меню извлекается из url. Далее происходит отображение этого меню. При клике на пункт меню происходит рекурсивный поиск по извлеченным данным, чтобы построить список пунктов которые должны быть открыты на пути к этому пункту меню. Далее данный список передается в шаблон который выводит пункты меню, рекурсивно вызывая себя при выводе развернутых пунктов меню. Такой алгоритм позволяет обратиться к любому пункту меню указав в url только имя меню и его пункт. Например, при вводе url (в зависимости от типа локального запуска)
+На странице `http://<hostname>/swagger/` представлена документация об эндпоинтах.
 
-  - http://127.0.0.1:8000/menu/first%20menu/Menu%20item/
-  - http://localhost/menu/first%20menu/Menu%20item/
+  - http://127.0.0.1:8000/api/v1/cinema/ - посмотреть все возможные кинотеатры методом GET
+  - http://127.0.0.1:8000/api/v1/cinema/search_address/ - поиск кинотеатров по адресу например (г. Воронеж) нужно передать запрос методом POST вида {"address": "г.Воронеж"} 
+  - http://127.0.0.1:8000/api/v1/cinema/search_name/ - поиск кинотеатров по имени например (Комсомолец) нужно передать запрос методом POST вида {"name": "Комсомолец"}
+  - http://127.0.0.1:8000/api/v1/cinema/1/ - получение первой записи с возможностью читать, заменять, изменять и удалять запись методами GET, PUT, PATCH, DELETE 
 
-
-произойдет переход на пункт меню `Menu item` с отрисовкой всех уровней вложенности меню `first menu` на пути к этому пункту меню.
 
 
 [⬆️Оглавление](#оглавление)

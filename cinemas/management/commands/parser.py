@@ -14,9 +14,7 @@ class Parser:
                           ' Chrome/127.0.0.0 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/'
                       'webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Cookie': 'apisid=GmbyLtWWSWEa1wLoRAJbe4wVB%2F63xRPp1JCFnve9FKFEMwBR5Cl55edmUjagHGTdmw'
-                      'KT2G34CIGpUcCCpHMQOl1G5QZO8XX3%2F42OIh3Wnnp%2FTmWzSul0Sp5InTd2tSWOemENl7CCL'
-                      'lvacDW3qnsTsFSqIUHImT1WARvvH6rs5eM%3D'
+            'Cookie': 'ck_session=eyJjYXB0Y2hhIjoiNDQ3NDY0In0=; ck_session.sig=MG4PIaV0z2emuBbG4dMpX1sSzuY; apisid=Dl2P%2FliLCCvhQwOkQT2GNb8ZNZD2imYKvlW%2Fm3q5%2FpLPX9WA%2F6PgeiuNsimyxVMGQLoORlX3x3VqXoP6HKGY1u8VWRqEevjnNArBE8f2WK4pmNF7YuLAb%2B31Fj6JJGRP%2BiLIgK6gCcqTr2TDQ%2FFIqO7AUp812TtRxJgQ7XCjzvo%3D'
         }
         results = requests.get(self.url, headers=headers)
         print(f'[INFO] {results.status_code}')
